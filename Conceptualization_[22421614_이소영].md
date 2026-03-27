@@ -16,7 +16,9 @@
 스스로 소비패턴으 파악하지 못해 돈관리에 어려움을 겪는 사람
 
 ## 2. system context diagram
-![IMG_2772](https://github.com/user-attachments/assets/8827143a-e571-4d94-93dc-064fab480923)
+
+![IMG_2772](https://github.com/user-attachments/assets/ad6daa67-4166-47fa-b9af-4ce60b2dea3a)
+
 
 ## 3. Use case list
 ### 1) 금융 데이터 연동
