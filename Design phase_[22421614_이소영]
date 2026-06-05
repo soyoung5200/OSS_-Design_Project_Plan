@@ -1,1 +1,225 @@
+# Design_phase
 
+## 1. Introduction
+
+본 문서는 가계부 관리 종합 서비스의 세 번째 개발 단계인 Design 단계의 산출물이다. Conceptualization 및 Analysis 단계에서 도출된 요구사항과 Use Case를 기반으로, 실제 구현에 직접 관여하는 모든 요소의 윤곽을 확정하고 구체적인 설계 내용을 다룬다. 본 문서에서 정의하는 Class Diagram, Sequence Diagram, State Machine Diagram 및 Implementation Requirements는 실제 소스 코드 구현 시 준거가 되는 설계 명세이다.
+
+**시스템의 주요 설계 원칙**
+
+- **사용자 금융 데이터의 보안성 우선**: 은행 API 인증 토큰 암호화 및 HTTPS 통신 강제
+- **관심사 분리(Separation of Concerns)**: 도메인 클래스와 UI, 알림, 분석 로직을 명확히 분리
+- **확장성 확보**: 다수 금융기관 연동 및 신규 기능 추가에 유연하게 대응 가능한 구조
+- **최소 터치 원칙**: 사용자 조작을 최소화하여 지속적인 사용을 유도하는 직관적 UI 흐름
+
+---
+
+## 2. Class Diagram
+
+아래는 본 시스템의 핵심 도메인 클래스들에 대한 다이어그램과 설명이다.
+
+$$클래스다이어그램
+
+
+### 1) User
+
+**(1) Attributes**
+
+| `-userId: String` | 사용자 고유 식별자 |
+|---|---|
+| `-email: String` | 이메일 주소 |
+| `-password: String` | 암호화된 비밀번호 |
+| `-createdAt: Date` | 가입 일시 |
+
+**(2) Methods**
+
+| `+login(email: String, password: String): boolean` |
+|---|
+| `+logout(): void` |
+| `+updateProfile(info: UserInfo): void` |
+| `+getBudget(): Budget` |
+
+---
+
+### 2) AccountLink
+
+**(1) Attributes**
+
+| `-linkId: String` | 연동 고유 ID |
+|---|---|
+| `-bankCode: String` | 금융기관 코드 |
+| `-accountNo: String` | 계좌번호 (마스킹) |
+| `-accessToken: String` | API 인증 토큰 |
+| `-lastSyncAt: Date` | 마지막 동기화 시점 |
+
+**(2) Methods**
+
+| `+sync(): List<Transaction>` |
+|---|
+| `+revoke(): void` |
+| `+isActive(): boolean` |
+
+---
+
+### 3) Transaction
+
+**(1) Attributes**
+
+| `-txId: String` | 거래 고유 ID |
+|---|---|
+| `-amount: int` | 거래 금액 |
+| `-date: Date` | 거래 일시 |
+| `-merchant: String` | 가맹점명 |
+| `-categoryId: String` | 카테고리 ID |
+| `-themeId: String` | 상위 테마 ID (nullable) |
+| `-memo: String` | 사용자 메모 |
+| `-isEdited: boolean` | 편집 여부 |
+
+**(2) Methods**
+
+| `+edit(amount: int, categoryId: String, memo: String): void` |
+|---|
+| `+delete(): void` |
+| `+applyDutchPay(headCount: int): void` |
+| `+assignTheme(themeId: String): void` |
+
+---
+
+### 4) ThemeGroup
+
+**(1) Attributes**
+
+| `-themeId: String` | 테마 고유 ID |
+|---|---|
+| `-userId: String` | 소유 사용자 ID |
+| `-name: String` | 테마 이름 |
+| `-targetBudget: int` | 테마 목표 예산 |
+| `-createdAt: Date` | 생성 일시 |
+
+**(2) Methods**
+
+| `+getTotalSpent(): int` |
+|---|
+| `+getTransactions(): List<Transaction>` |
+| `+rename(name: String): void` |
+| `+delete(): void` |
+
+---
+
+### 5) Budget
+
+**(1) Attributes**
+
+| `-budgetId: String` | 예산 고유 ID |
+|---|---|
+| `-userId: String` | 사용자 ID |
+| `-monthlyIncome: int` | 월 수입 |
+| `-fixedExpense: int` | 고정 지출 합계 |
+| `-warningThreshold: float` | 경고 임계치 (0.0~1.0) |
+| `-yearMonth: String` | 대상 연월 (YYYY-MM) |
+
+**(2) Methods**
+
+| `+getAvailableAmount(): int` |
+|---|
+| `+getCurrentSpent(): int` |
+| `+checkThreshold(): boolean` |
+
+---
+
+### 6) DutchPay
+
+**(1) Attributes**
+
+| `-dutchId: String` | 더치페이 고유 ID |
+|---|---|
+| `-txId: String` | 원본 거래 ID |
+| `-totalAmount: int` | 총 결제 금액 |
+| `-headCount: int` | 참여 인원수 |
+| `-myShare: int` | 개인 부담금 |
+
+**(2) Methods**
+
+| `+calculate(totalAmount: int, headCount: int): int` |
+|---|
+| `+applyToTransaction(): void` |
+
+---
+
+### 7) FixedSchedule
+
+**(1) Attributes**
+
+| `-scheduleId: String` | 일정 고유 ID |
+|---|---|
+| `-userId: String` | 사용자 ID |
+| `-title: String` | 일정 이름 (예: 월급) |
+| `-dayOfMonth: int` | 매월 해당 일 |
+| `-amount: int` | 예상 금액 |
+| `-type: String` | `'INCOME'` \| `'EXPENSE'` |
+
+**(2) Methods**
+
+| `+generateNotification(): Notification` |
+|---|
+| `+update(title: String, dayOfMonth: int): void` |
+| `+delete(): void` |
+
+---
+
+### 8) Notification
+
+**(1) Attributes**
+
+| `-notiId: String` | 알림 고유 ID |
+|---|---|
+| `-userId: String` | 대상 사용자 ID |
+| `-type: String` | `'WARNING'` \| `'REMINDER'` |
+| `-message: String` | 알림 메시지 |
+| `-isRead: boolean` | 읽음 여부 |
+| `-createdAt: Date` | 생성 일시 |
+
+**(2) Methods**
+
+| `+send(): void` |
+|---|
+| `+markAsRead(): void` |
+
+---
+
+### 9) ConsumptionAnalysis
+
+**(1) Attributes**
+
+| `-analysisId: String` | 분석 고유 ID |
+|---|---|
+| `-userId: String` | 사용자 ID |
+| `-yearMonth: String` | 분석 대상 연월 |
+| `-categoryStats: Map<String,int>` | 카테고리별 지출 |
+| `-monthOverMonth: float` | 전월 대비 증감률 |
+
+**(2) Methods**
+
+| `+generate(userId: String, yearMonth: String): ConsumptionAnalysis` |
+|---|
+| `+getCategoryChart(): ChartData` |
+| `+getSummaryText(): String` |
+
+---
+
+### 10) Category
+
+**(1) Attributes**
+
+| `-categoryId: String` | 카테고리 ID |
+|---|---|
+| `-name: String` | 카테고리명 (예: 식비) |
+| `-iconUrl: String` | 아이콘 경로 |
+| `-color: String` | 표시 색상 코드 |
+
+**(2) Methods**
+
+| `+getAll(): List<Category>` |
+|---|
+| `+findById(categoryId: String): Category` |
+
+---
