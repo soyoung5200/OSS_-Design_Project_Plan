@@ -369,3 +369,61 @@
 | 앱 종료 | 사용자가 로그아웃하거나 앱을 종료한 상태. |
 
 ---
+## 5. Implementation Requirements
+
+### 1) Hardware Requirements
+
+| **항목** | **요구 사항** |
+|---|---|
+| CPU | 1.5GHz 이상의 모바일 프로세서 |
+| RAM | 2GB 이상 |
+| 저장 공간 | 100MB 이상의 여유 공간 |
+| 네트워크 | 인터넷 연결 필수 (은행 API 연동) |
+| OS | Android 9.0 이상 / iOS 14.0 이상 |
+
+### 2) Software Requirements
+
+| **항목** | **요구 사항** |
+|---|---|
+| 구현 언어 | Kotlin (Android) / Swift (iOS), 또는 Flutter(Dart) 크로스플랫폼 |
+| 백엔드 | Java Spring Boot (REST API 서버) |
+| 데이터베이스 | PostgreSQL (서버), SQLite (로컬 캐시) |
+| API 연동 | 금융결제원 오픈뱅킹 API v2.0 |
+| 푸시 알림 | Firebase Cloud Messaging (FCM) |
+
+### 3) Nonfunctional Requirements
+
+| **항목** | **요구 사항** |
+|---|---|
+| 보안 | 은행 API 토큰 암호화 저장, HTTPS 통신 필수, 개인정보보호법 준수 |
+| 성능 | API 동기화 5초 이내, 분석 리포트 렌더링 5초 이내 |
+| 가용성 | 서버 99.5% 이상 업타임 목표 |
+| 확장성 | 다수 은행·카드사 API 추가 연동 가능한 플러그인 구조 |
+
+---
+
+## 6. Glossary
+
+| **Terms** | **Description** |
+|---|---|
+| Class Diagram | 객체지향 시스템 설계에서 클래스들의 존재와 관계를 도식으로 정의한 구조 다이어그램. |
+| Sequence Diagram | 시스템 내 객체들 간의 시간 순서에 따른 메시지 흐름을 표현하는 동적 다이어그램. |
+| State Machine Diagram | 시스템이 취할 수 있는 유한한 상태와 상태 전이 조건을 표현하는 행위 다이어그램. |
+| API (Application Programming Interface) | 은행·카드사와 같은 외부 시스템과 데이터를 교환하기 위한 인터페이스 규격. |
+| 오픈뱅킹 (Open Banking) | 금융결제원이 제공하는 표준 API로, 여러 금융기관의 계좌 정보와 거래 내역에 접근 가능. |
+| 더치페이 (Dutch Pay) | 여럿이 공동으로 결제한 금액을 인원수로 나누어 개인 부담금만 기록하는 기능. |
+| 상위 테마 (Theme Group) | '여행', '야구장' 등 특정 이벤트에서 발생한 복수의 거래를 하나의 주제로 묶는 관리 단위. |
+| 가용 금액 (Available Amount) | 월 수입에서 고정 지출과 현재까지의 지출을 제외한 실제 사용 가능한 잔여 예산. |
+| 임계치 (Threshold) | 경고 알림을 발동하는 기준이 되는 예산 소진 비율 (예: 80%). |
+| FCM (Firebase Cloud Messaging) | Google이 제공하는 크로스플랫폼 모바일 푸시 알림 서비스. |
+| boolean | true / false 두 가지 값만 가지는 논리 데이터 타입. |
+| 메소드 (Method) | 클래스 내에 정의된 함수로, 해당 객체가 수행할 수 있는 동작을 구현한 서브루틴. |
+
+---
+
+## 7. References
+
+- 금융결제원 오픈뱅킹 API 표준 규격서 (v2.0)
+- 개인정보보호법 및 금융 데이터 보안 가이드라인
+- UML 2.0 표준 명세 (OMG, https://www.omg.org/spec/UML/)
+- Firebase Cloud Messaging 공식 문서 (https://firebase.google.com/docs/cloud-messaging)
