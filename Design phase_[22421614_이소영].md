@@ -17,7 +17,8 @@
 
 아래는 본 시스템의 핵심 도메인 클래스들에 대한 다이어그램과 설명이다.
 
-![Class Diagram](class_diagram.jpg)
+<img width="3504" height="2312" alt="class_diagram" src="https://github.com/user-attachments/assets/f1663921-1b78-4bc8-b1d5-3cfe491decdf" />
+
 
 ### 1) User
 
@@ -233,7 +234,7 @@
 
 사용자가 '동기화' 버튼을 누르면 `AccountLink.sync()`가 호출된다. 시스템은 은행 API에 인증 토큰과 함께 거래 내역을 요청하고, 수신된 데이터를 카테고리별로 분류하여 Transaction으로 저장한다. API 오류 발생 시 실패 메시지와 함께 수동 입력 안내를 제공한다.
 
-![SD1 금융 데이터 연동](sd1_sync.jpg)
+<img width="2385" height="1335" alt="sd1_sync" src="https://github.com/user-attachments/assets/d2759521-dc88-4c22-b7cb-5eccc91570f2" />
 
 | **Step** | **From** | **To / Action** | **Message / Return** |
 |---|---|---|---|
@@ -250,7 +251,7 @@
 
 사용자가 복수의 거래 내역을 선택 후 테마명을 입력하면 ThemeGroup이 생성되고 각 Transaction에 themeId가 할당된다.
 
-![SD2 상위 테마 그룹화](sd2_theme.jpg)
+<img width="2085" height="1185" alt="sd2_theme" src="https://github.com/user-attachments/assets/542357aa-2b21-4669-861a-2b1d30310576" />
 
 | **Step** | **From** | **To / Action** | **Message / Return** |
 |---|---|---|---|
@@ -265,7 +266,7 @@
 
 지출 상세 화면에서 더치페이를 실행하고 인원수를 입력하면 `DutchPay.calculate()`가 개인 부담금을 산출하고, 원본 Transaction 금액을 수정한다.
 
-![SD3 더치페이 지출 계산](sd3_dutch.jpg)
+<img width="2085" height="1335" alt="sd3_dutch" src="https://github.com/user-attachments/assets/e73503fe-f32c-4610-8556-1ed8a595d627" />
 
 | **Step** | **From** | **To / Action** | **Message / Return** |
 |---|---|---|---|
@@ -281,7 +282,7 @@
 
 새로운 거래 등록 시 `Budget.checkThreshold()`가 실행된다. 누적 지출이 임계치를 초과하면 Notification을 생성하고 푸시 알림을 발송한다.
 
-![SD4 가용 금액 경고 알림](sd4_warning.jpg)
+<img width="2085" height="1335" alt="sd4_warning" src="https://github.com/user-attachments/assets/9888157b-068e-4d58-a8f8-0cd781905f09" />
 
 | **Step** | **From** | **To / Action** | **Message / Return** |
 |---|---|---|---|
@@ -297,7 +298,7 @@
 
 스케줄러가 매일 자정 FixedSchedule을 조회하여 당일 일정이 있는 사용자에게 리마인드 알림을 발송한다.
 
-![SD5 고정 소득/지출 확인 알림](sd5_reminder.jpg)
+<img width="2385" height="1335" alt="sd5_reminder" src="https://github.com/user-attachments/assets/fc19c248-baa8-4874-b63b-bf166da609d3" />
 
 | **Step** | **From** | **To / Action** | **Message / Return** |
 |---|---|---|---|
@@ -312,7 +313,7 @@
 
 사용자가 분석 탭을 선택하면 `ConsumptionAnalysis.generate()`가 해당 월 거래 데이터를 집계하고 카테고리별 차트와 전월 대비 코멘트를 생성한다.
 
-![SD6 소비 습관 분석](sd6_analysis.jpg)
+<img width="2085" height="1335" alt="sd6_analysis" src="https://github.com/user-attachments/assets/9bae8512-e5ed-4e82-8fb4-9e7cbc366826" />
 
 | **Step** | **From** | **To / Action** | **Message / Return** |
 |---|---|---|---|
@@ -328,7 +329,8 @@
 
 거래 상세 화면에서 수정 또는 삭제를 선택하면 `Transaction.edit()` 또는 `delete()`가 호출되어 DB가 갱신되고 통계가 즉시 반영된다.
 
-![SD7 연동 내역 편집 및 삭제](sd7_edit.jpg)
+<img width="2385" height="1335" alt="sd7_edit" src="https://github.com/user-attachments/assets/77f851b5-25a4-4a70-88b2-799c64970d61" /><img width="3585" height="2385" alt="state_machine" src="https://github.com/user-attachments/assets/6fc6ad6a-ed7a-4ed9-a537-c3c9cfa95c08" />
+
 
 | **Step** | **From** | **To / Action** | **Message / Return** |
 |---|---|---|---|
@@ -344,7 +346,8 @@
 
 아래는 가계부 관리 종합 서비스 전체 시스템의 State Machine Diagram이다. 시스템은 '앱 시작'에서 초기화되어 사용자의 행동 및 스케줄러 이벤트에 따라 상태가 전이되며, '앱 종료' 상태에서 종료된다.
 
-![State Machine Diagram](state_machine.jpg)
+<img width="3585" height="2385" alt="state_machine" src="https://github.com/user-attachments/assets/17d0a123-edcb-4d0a-b065-e96c27d8874c" />
+
 
 아래는 각 State에 대한 설명이다.
 
