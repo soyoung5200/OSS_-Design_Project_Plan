@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">바른지갑</string>
+    <string name="nav_dashboard">홈</string>
+    <string name="nav_transaction">내역</string>
+    <string name="nav_analysis">분석</string>
+    <string name="nav_theme">테마</string>
+    <string name="nav_notification">알림</string>
+</resources>

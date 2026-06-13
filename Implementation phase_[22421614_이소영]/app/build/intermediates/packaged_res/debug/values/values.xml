@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#10B981</color>
+    <color name="background">#F8FAFC</color>
+    <color name="black">#000000</color>
+    <color name="card_shadow">#1A000000</color>
+    <color name="divider">#E2E8F0</color>
+    <color name="expense_red">#EF4444</color>
+    <color name="income_green">#10B981</color>
+    <color name="on_surface">#1E293B</color>
+    <color name="primary">#2563EB</color>
+    <color name="primary_dark">#1D4ED8</color>
+    <color name="primary_light">#EFF6FF</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="warning_yellow">#F59E0B</color>
+    <color name="white">#FFFFFF</color>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="card_radius">12dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="text_body">14sp</dimen>
+    <dimen name="text_large">20sp</dimen>
+    <dimen name="text_medium">16sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_xlarge">24sp</dimen>
+    <string name="app_name">바른지갑</string>
+    <string name="nav_analysis">분석</string>
+    <string name="nav_dashboard">홈</string>
+    <string name="nav_notification">알림</string>
+    <string name="nav_theme">테마</string>
+    <string name="nav_transaction">내역</string>
+    <style name="CardStyle" parent="">
+        <item name="android:background">@drawable/card_background</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    <style name="Theme.BareunJigap" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/primary</item>
+    </style>
+</resources>

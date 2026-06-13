@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/mipmap-hdpi_ic_launcher_round.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/mipmap-hdpi/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_fragment_notification.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/fragment_notification.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_fragment_theme.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/fragment_theme.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/drawable_spinner_background.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/drawable/spinner_background.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/drawable_card_background.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/drawable/card_background.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_activity_budget_setting.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/activity_budget_setting.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_fragment_transaction.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/fragment_transaction.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_activity_main.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_activity_transaction_edit.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/activity_transaction_edit.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_item_fixed_schedule.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/item_fixed_schedule.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_activity_fixed_schedule.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/activity_fixed_schedule.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_item_transaction.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/item_transaction.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_item_theme.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/item_theme.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/mipmap-hdpi_ic_launcher.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/mipmap-hdpi/ic_launcher.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_fragment_analysis.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/fragment_analysis.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/drawable_button_primary.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/drawable/button_primary.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_activity_register.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/drawable_ic_notification.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/drawable/ic_notification.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_fragment_dashboard.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/fragment_dashboard.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_activity_login.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_dialog_add_schedule.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/dialog_add_schedule.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/drawable_toggle_button_selector.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/drawable/toggle_button_selector.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_item_notification.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/item_notification.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/color_bottom_nav_color.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/color/bottom_nav_color.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/layout_activity_dutchpay.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/layout/activity_dutchpay.xml"
+    },
+    {
+        "merged": "com.bareunjigap.app-merged_res-57:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.bareunjigap.app-main-59:/menu/bottom_nav_menu.xml"
+    }
+]
